@@ -1,11 +1,10 @@
 """
-This script simulates the progression of multiple assets through a multi-phase development pipeline using SimPy.
-Each year, 50 new assets are initialized at a random time within that year, for 10 years (total 500 assets). Each asset
-then proceeds sequentially through a series of phases (ID1, ID2, Ph1, Ph2A, Ph2B, Ph3, File). Each phase has a defined duration
-and probability of success. If an asset fails a phase, it does not proceed to subsequent phases. The simulation
-prints the timing and outcome for each asset at each phase, and stores all simulation details in a Pandas DataFrame
-for further analysis. This version runs for 100 replications in parallel using Python's ProcessPoolExecutor to speed up
-the simulation, and prints the total running time. (runs 5x faster than simpy4.py)
+Simulates asset progression through a multi-phase development pipeline using SimPy.
+Years and number of assets per year are now defined by variables (NUM_YEARS, ASSETS_PER_YEAR).
+Each year, NUM_ASSETS_PER_YEAR new assets are initialized at a random time within that year, for NUM_YEARS years.
+Assets proceed sequentially through phases (ID1, ID2, Ph1, Ph2A, Ph2B, Ph3, File), each with defined duration and probability of success.
+Failed assets do not proceed further. Simulation details are stored in a Pandas DataFrame.
+Runs multiple replications in parallel using ProcessPoolExecutor and prints total running time.
 """
 
 import simpy
